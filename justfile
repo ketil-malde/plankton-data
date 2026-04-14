@@ -4,28 +4,25 @@ default:
 
 get-uvp6-net:
 	@echo "Getting uvp6-net data"
-	mkdir -p tmp uvp6-net
-	test -e tmp/119452.tar || (wget https://www.seanoe.org/data/00908/101948/data/119452.tar -O tmp/119452.tar && tar -C uvp6-net -xf tmp/119452.tar)
+	# UVP6 does not create its own directory
+	mkdir -p tmp UVP6Net
+	test -e tmp/119452.tar || (wget https://www.seanoe.org/data/00908/101948/data/119452.tar -O tmp/119452.tar && tar -C UVP6Net -xf tmp/119452.tar)
 
 get-flowcam:
 	@echo "Getting flowcam data"
-	mkdir -p tmp flowcam
-	test -e tmp/113201.tar || (wget https://www.seanoe.org/data/00908/101961/data/113201.tar -O tmp/113201.tar && tar -C flowcam -xf tmp/113201.tar)
+	test -e tmp/113201.tar || (wget https://www.seanoe.org/data/00908/101961/data/113201.tar -O tmp/113201.tar && tar -xf tmp/113201.tar)
 
 get-zoocam:
 	@echo "Getting ZooCam data"
-	mkdir -p tmp/zoocam
-	test -e tmp/113094.tar || (wget https://www.seanoe.org/data/00907/101928/data/113094.tar -O tmp/113094.tar && tar -C zoocam -xf tmp/113094.tar)
+	test -e tmp/113094.tar || (wget https://www.seanoe.org/data/00907/101928/data/113094.tar -O tmp/113094.tar && tar -xf tmp/113094.tar)
 
 get-zooscan:
 	@echo "Getting ZooScan data"
-	mkdir -p tmp/zooscan
-	test -e tmp/113141.tar || (wget https://www.seanoe.org/data/00446/55741/data/113141.tar -O tmp/113141.tar && tar -C zooscan -xf tmp/113141.tar)
+	test -e tmp/113141.tar || (wget https://www.seanoe.org/data/00446/55741/data/113141.tar -O tmp/113141.tar && tar -xf tmp/113141.tar)
 
 get-isiis:
 	@echo "Getting ISIIS data"
-	mkdir -p tmp/isiis
-	test -e tmp/113146.tar || (wget https://www.seanoe.org/data/00908/101950/data/113146.tar -O tmp/113146.tar && tar -C isiis -xf tmp/113146.tar)
+	test -e tmp/113146.tar || (wget https://www.seanoe.org/data/00908/101950/data/113146.tar -O tmp/113146.tar && tar -xf tmp/113146.tar)
 
 
 
