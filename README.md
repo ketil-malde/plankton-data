@@ -22,7 +22,7 @@ get-zooscan
 : The ZooScanNet data set (1.5M images, 120 classes)
 
 get-whoi
-: The IFCB dataset from WHOI (years 2006-2014, 3.5M images)
+: The IFCB dataset from WHOI (years 2006-2014, 3.5M images, 103 classes)
 
 get-all-data
 : Shortcut to download all of the above.
