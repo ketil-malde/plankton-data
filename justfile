@@ -5,6 +5,13 @@ default:
 tmpdir:
 	mkdir -p tmp
 
+# From Panaoïtis 2026:
+#   FlowCAM: <https://www.seanoe.org/data/00908/101961/>
+#   ISIIS: <https://www.seanoe.org/data/00908/101950/>
+#   UVP6: <https://www.seanoe.org/data/00908/101948/>
+#   ZooCam: <https://www.seanoe.org/data/00907/101928/>
+#   ZooScan: <https://www.seanoe.org/data/00446/55741/>
+
 get-uvp6-net: tmpdir
 	@echo "Getting uvp6-net data"
 	# UVP6 does not create its own directory
@@ -27,11 +34,14 @@ get-isiis: tmpdir
 	@echo "Getting ISIIS data"
 	test -e tmp/113146.tar || (wget https://www.seanoe.org/data/00908/101950/data/113146.tar -O tmp/113146.tar && tar -xf tmp/113146.tar)
 
+# From Womack et al.
+# Doesn't work (yet)
 get-womack: tmpdir
 	@echo "Getting data from Womack et al"
 	mkdir -p tmp womack
 	test -e tmp/womack.zip || (wget https://darchive.mblwhoilibrary.org/bitstreams/6968c380-3713-57b1-bdca-5b21e514a996/download -O tmp/womack.zip)
 
+# From WHOI
 get-whoi: tmpdir
 	@echo "Getting WHOI IFCB data"
 	mkdir -p whoi
@@ -39,21 +49,7 @@ get-whoi: tmpdir
 	    test -e tmp/$x.zip || (wget https://darchive.mblwhoilibrary.org/bitstreams/$x/download -O tmp/$x.zip && cd whoi && unzip ../tmp/$x.zip) \
 	done
 
+# CSIRO provides some data sets, but the S3 storage and front end make the data difficult to download
 
-# fucking CSIRO wankers.
-# https://s3.data.csiro.au/dapprd/000064786v001/data/data/FC8400/CS17/2022-08-25/02/images/FC8400_CS17_02_2X_1000FOV_20220825T124500%2B0800_000001.JPG?response-content-disposition=attachment%3B%20filename%3D%22FC8400_CS17_02_2X_1000FOV_20220825T124500%2B0800_000001.JPG%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20260409T151654Z&X-Amz-SignedHeaders=host&X-Amz-Expires=172800&X-Amz-Credential=BR3J2PWXHENVTUT1NQVX%2F20260409%2FCDC%2Fs3%2Faws4_request&X-Amz-Signature=a83e7b9e41a8ec5075cc52a5c098e35ece86ef79882b1f3969ce7ce116d41e2d
+get-all-data: get-uvp6-net get-flowcam get-zoocam get-zooscan get-isiis get-whoi
 
-
-
-get-data: get-uvp6-net get-flowcam get-zoocam get-zooscan get-isiis
-	@echo "Getting data"
-
-train:
-	@echo "Training VAE"
-
-# From Panaoïtis 2026:
-#   FlowCAM: <https://www.seanoe.org/data/00908/101961/>
-#   ISIIS: <https://www.seanoe.org/data/00908/101950/>
-#   UVP6: <https://www.seanoe.org/data/00908/101948/>
-#   ZooCam: <https://www.seanoe.org/data/00907/101928/>
-#   ZooScan: <https://www.seanoe.org/data/00446/55741/>
