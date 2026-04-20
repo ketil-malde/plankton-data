@@ -36,10 +36,9 @@ get-isiis: tmpdir
 
 # From Womack et al.
 # Doesn't work (yet)
-get-womack: tmpdir
-	@echo "Getting data from Womack et al"
-	mkdir -p tmp womack
-	test -e tmp/womack.zip || (wget https://darchive.mblwhoilibrary.org/bitstreams/6968c380-3713-57b1-bdca-5b21e514a996/download -O tmp/womack.zip)
+get-uw38: tmpdir
+	@echo "Getting UW38 data (via Womack et al.)"
+	test -e tmp/womack-uw38.zip || (wget https://zenodo.org/records/18497521/files/uw38-preprocessed.zip?download=1 -O tmp/womack-uw38.zip && unzip tmp/womack-uw38.zip)
 
 # From WHOI
 get-whoi: tmpdir

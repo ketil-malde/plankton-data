@@ -4,7 +4,7 @@ The `justfile` in the repostiory defines a list of targets, each corresponding t
 
 If you don't have `just` (and refuse to install it), you can read the `justfile` and figure out the shell commands it would execute fairly easily.
 
-The currently provided targets are:
+The currently provided targets are listed below.  The first chunk is from Panaoïtis et al.:
 
 get-flowcam
 : The [FlowCamNet](https://www.seanoe.org/data/00908/101961/) data set (300k images, 93 classes)
@@ -21,8 +21,15 @@ get-zoocam
 get-zooscan
 : The [ZooScanNet](https://www.seanoe.org/data/00446/55741/) data set (1.5M images, 120 classes)
 
+Woods Hole have been collecting and publishing data from their IFCB for several years:
+
 get-whoi
 : The [IFCB dataset](https://darchive.mblwhoilibrary.org/collections/aad045e7-1fcf-5650-82ee-c62bd604d225) from WHOI (years 2006-2014, 3.5M images, 103 classes)
+
+Womack et al. have [published](https://zenodo.org/records/18497521) an overview of multiple data sets.
+
+get-uw38
+: The [Univeristy of Washington ZooCam](https://www.bco-dmo.org/dataset/927518) data set (16k images, 38 classes)
 
 get-all-data
 : Shortcut to download all of the above.
