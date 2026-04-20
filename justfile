@@ -50,5 +50,5 @@ get-whoi: tmpdir
 
 # CSIRO provides some data sets, but the S3 storage and front end make the data difficult to download
 
-get-all-data: get-uvp6-net get-flowcam get-zoocam get-zooscan get-isiis get-whoi
+get-all-data: get-uvp6-net get-flowcam get-zoocam get-zooscan get-isiis get-uw38 get-whoi
 

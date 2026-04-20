@@ -26,10 +26,12 @@ Woods Hole have been collecting and publishing data from their IFCB for several 
 get-whoi
 : The [IFCB dataset](https://darchive.mblwhoilibrary.org/collections/aad045e7-1fcf-5650-82ee-c62bd604d225) from WHOI (years 2006-2014, 3.5M images, 103 classes)
 
-Womack et al. have [published](https://zenodo.org/records/18497521) an overview of multiple data sets.
+Womack et al. have [published](https://zenodo.org/records/18497521) an overview of multiple data sets.  These may or may not overlap with the other data sets, e.g. the Kaggle datasets contain ISIIS images, and there are several WHOI datasets.
 
 get-uw38
 : The [Univeristy of Washington ZooCam](https://www.bco-dmo.org/dataset/927518) data set (16k images, 38 classes)
+
+Or you can just download everthing:
 
 get-all-data
 : Shortcut to download all of the above.
