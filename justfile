@@ -35,10 +35,19 @@ get-isiis: tmpdir
 	test -e tmp/113146.tar || (wget https://www.seanoe.org/data/00908/101950/data/113146.tar -O tmp/113146.tar && tar -xf tmp/113146.tar)
 
 # From Womack et al.
-# Doesn't work (yet)
-get-uw38: tmpdir
-	@echo "Getting UW38 data (via Womack et al.)"
-	test -e tmp/womack-uw38.zip || (wget https://zenodo.org/records/18497521/files/uw38-preprocessed.zip?download=1 -O tmp/womack-uw38.zip && unzip tmp/womack-uw38.zip)
+get-hboi:        (get-zenodo "18497521" "hboi19-preprocessed.zip")
+get-kaggle38:    (get-zenodo "18497521" "kaggle38-preprocessed.zip")
+get-kaggle83:    (get-zenodo "18497521" "kaggle83-preprocessed.zip")
+get-linnaeus466: (get-zenodo "18497521" "linnaeus466.zip")
+get-pmid23:      (get-zenodo "18497521" "pmid23-preprocessed.zip")
+get-syke51:      (get-zenodo "18497521" "syke51-preprocessed.zip")
+get-uvp66:       (get-zenodo "18497521"  "uvp66-preprocessed.zip")
+get-uw38:        (get-zenodo "18497521" "uw38-preprocessed.zip")
+get-whoi22:      (get-zenodo "18497521" "whoi22-preprocessed.zip")
+get-whoi79:      (get-zenodo "18497521" "whoi79-preprocessed.zip")
+get-zoolake35:   (get-zenodo "18497521" "zoolake35-preprocessed.zip")
+get-zooscan20:   (get-zenodo "18497521" "zooscan20-preprocessed.zip")
+get-zooscan93:   (get-zenodo "18497521" "zooscan93-preprocessed.zip")
 
 # From WHOI
 get-whoi: tmpdir
@@ -49,6 +58,9 @@ get-whoi: tmpdir
 	done
 
 # CSIRO provides some data sets, but the S3 storage and front end make the data difficult to download
+
+get-zenodo record filename:
+        test -e tmp/{{filename}} || (wget https://zenodo.org/records/{{record}}/files/{{filename}}?download=1 -O tmp/{{filename}} && unzip tmp/{{filename}})
 
 get-all-data: get-uvp6-net get-flowcam get-zoocam get-zooscan get-isiis get-uw38 get-whoi
 
