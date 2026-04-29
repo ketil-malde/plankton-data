@@ -52,3 +52,7 @@ get-whoi: tmpdir
 
 get-all-data: get-uvp6-net get-flowcam get-zoocam get-zooscan get-isiis get-uw38 get-whoi
 
+validate zipfile:
+        @echo "Validating {{zipfile}}"
+        (cd tmp && grep {{zipfile}} checksums.txt | sha256sum -c -)
+
