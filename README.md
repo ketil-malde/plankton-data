@@ -1,26 +1,32 @@
-This repository provides an index to a variety of public plankton image data sets in a from that make them simple to download in a uniform way.
+# Summary
 
-The `justfile` in the repostiory defines a list of targets, each corresponding to a data set.  To get a specific set, you need the [`just`](https://github.com/casey/just) executable, and then it's just (ah ha) a matter of typing `just get-X` to get the `X` dataset.
+This repository provides an index to a variety of public plankton image data sets in a form that make them simple to download in a uniform way.  It thus serves both as a catalog over available data sets, and a method to obtain them.
 
-If you don't have `just` (and refuse to install it), you can read the `justfile` and figure out the shell commands it would execute fairly easily.
+# How to use it
+
+The `justfile` in the repository defines a list of targets, each corresponding to a data set.  To get a specific set, you need the [`just`](https://github.com/casey/just) executable, (probably available as `apt insatll just` or similar on your favorite Linux distribution). And then it's just (ah ha) a matter of typing `just get-X` to get the `X` dataset.
+
+If you don't have `just` (and refuse to install it), you can read the `justfile` and figure out the shell commands each target would execute.
 
 # Instruments
 
+Below is a quick overview of the instruments used to capture the different data sets.  It is intended to give a quick overview, not as a rigorous or authoritative (i.e. correct) source of information.  *Caveat lector*.
+
 The [Underwater Vision Profiler](http://www.hydroptic.com/index.php/public/Page/product_item/UVP6-LP)s, UVP5 and UVP6, are cameras that creates a "sheet" of light in front to capture in focus particles.  Often used as a drop camera (e.g. on a CTD probe) or mounted on gliders.
 
-FlowCam is a lab instrument that siphons a water sample in front of a flow cell camera.  Different variants capture particles of specific sizes.
+[FlowCam](https://www.fluidimaging.com/applications/aquatic/plankton-research) is a lab instrument that siphons a water sample in front of a flow cell camera.  Different variants capture particles of specific sizes.
 
 [ZooScan](http://www.hydroptic.com/index.php/public/Page/product_item/ZOOSCAN) is essentially a waterproofed flatbed scanner that captures images of water samples in the lab.
 
 HOLOCAM is a digital holography instrument from Scripps that captures volumetric 3d information.
 
-[ZooCam](https://archimer.ifremer.fr/doc/00407/51833/52432.pdf) is an IFREMER system for fish eggs and metazooplankton.
+[ZooCam](https://archimer.ifremer.fr/doc/00407/51833/52432.pdf) is an IFREMER system using a dual camaera setup to detect fish eggs and metazooplankton in situ.
 
-The [Dual Scripps Plankton Camera](https://jaffeweb.ucsd.edu/research-projects/scripps-plankton-camera-system/spc-dual/), DSPC, uses two cameras at different resolutions to capture images in situ.
+The [Dual Scripps Plankton Camera](https://jaffeweb.ucsd.edu/research-projects/scripps-plankton-camera-system/spc-dual/), DSPC, uses two cameras with different magnifications to capture images in situ.
 
 [IFCP](https://mclanelabs.com/wp-content/uploads/2022/12/McLane-IFCB-Datasheet.pdf) is a flow instrument that captures small particles in situ, used by WHOI.
 
-ISIIS is
+The In Situ Ichtyoplankton Imaging System [ISIIS](https://twilightzone.whoi.edu/work-impact/technology/stingray/) is a towed instrument using high resolution shadowgraphy.
 
 # Data sets
 
