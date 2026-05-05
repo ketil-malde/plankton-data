@@ -12,83 +12,83 @@ tmpdir:
 #   ZooCam: <https://www.seanoe.org/data/00907/101928/>
 #   ZooScan: <https://www.seanoe.org/data/00446/55741/>
 
-# UVP6Net, 630k images, 54 classes
+# UVP6Net, 630k images, 54 classes, 2.6 GB
 get-uvp6net: tmpdir
 	# UVP6 does not create its own directory
 	mkdir -p UVP6Net
 	test -e tmp/119452.tar || (wget https://www.seanoe.org/data/00908/101948/data/119452.tar -O tmp/119452.tar && tar -C UVP6Net -xf tmp/119452.tar)
 
-# FlowCamNet, 300k images, 93 classes
+# FlowCamNet, 300k images, 93 classes, 1.5 GB
 get-flowcamnet: tmpdir
 	test -e tmp/113201.tar || (wget https://www.seanoe.org/data/00908/101961/data/113201.tar -O tmp/113201.tar && tar -xf tmp/113201.tar)
 
-# ZooCamNet, 1.3M images, 93 classes
+# ZooCamNet, 1.3M images, 93 classes, 6.8 GB
 get-zoocamnet: tmpdir
 	test -e tmp/113094.tar || (wget https://www.seanoe.org/data/00907/101928/data/113094.tar -O tmp/113094.tar && tar -xf tmp/113094.tar)
 
-# ZooScanNet, 1.5M images, 120 classes.
+# ZooScanNet, 1.5M images, 120 classes, 12 GB
 get-zooscannet: tmpdir
 	test -e tmp/113141.tar || (wget https://www.seanoe.org/data/00446/55741/data/113141.tar -O tmp/113141.tar && tar -xf tmp/113141.tar)
 
-# ISIISNet, 400k images, 32 classes.
+# ISIISNet, 400k images, 32 classes, 2 GB
 get-isiisnet: tmpdir
 	test -e tmp/113146.tar || (wget https://www.seanoe.org/data/00908/101950/data/113146.tar -O tmp/113146.tar && tar -xf tmp/113146.tar)
 
 # From Womack et al.
 
-# HOLOCAM digital holography, 107k images, 19 classes
+# HOLOCAM digital holography, 107k images, 19 classes, 45 GB
 get-hboi:        (get-zenodo "18497521" "hboi19-preprocessed.zip")
 
-# ISIIS data, 14k images, 38 classes.
+# ISIIS data via Kaggle, 14k images, 38 classes, 120 MB
 get-kaggle38:    (get-zenodo "18497521" "kaggle38-preprocessed.zip")
 
-# Expanded ISIIS data set, Kaggle38, 15k images, 83 classes
+# Expanded ISIIS data set via Kaggle, 15k images, 83 classes, 130 MB
 get-kaggle83:    (get-zenodo "18497521" "kaggle83-preprocessed.zip")
 
-# 95k images, 466 classes taxonomically standardized to WoRMS
+# 95k images, 466 classes taxonomically standardized to WoRMS, 5.8 GB
 get-linnaeus466: (get-zenodo "18497521" "linnaeus466.zip")
 
-# High resolution, 2.8k images in 23 phytoplankton classes
+# High resolution, 2.8k images in 23 phytoplankton classes, 40 MB
 get-pmid23:      (get-zenodo "18497521" "pmid23-preprocessed.zip")
 
-# Unknown instrument, 214k images, 51 classes.
+# Unknown instrument, 214k images, 51 classes, 7 GB
 get-syke51:      (get-zenodo "18497521" "syke51-preprocessed.zip")
 
-# UVP5, 630k images, 60 (sic) classes
+# UVP5, 630k images, 60 (sic) classes, 5.2 GB
 get-uvp66:       (get-zenodo "18497521"  "uvp66-preprocessed.zip")
 
-# NOAA/University of Washington ZooCam data, 16k images in 38 classes.
+# NOAA/University of Washington ZooCam data, 16k images in 38 classes, 500 MB
 get-noaa38:        (get-zenodo "18497521" "uw38-preprocessed.zip")
 
-# Curated IFCB data from WHOI, 6.6k images, 22 classes.
+# Curated IFCB data from WHOI, 6.6k images, 22 classes, 2.8 GB
 get-whoi22:      (get-zenodo "18497521" "whoi22-preprocessed.zip")
 
-# Curated IFCB data from WHOI, 250k images, 79 classes.
+# Curated IFCB data from WHOI, 250k images, 79 classes, 7.6 GB
 get-whoi79:      (get-zenodo "18497521" "whoi79-preprocessed.zip")
 
-# DSPC, 18k images of 35 freshwater species from Lake Greifensee
+# DSPC, 18k images of 35 freshwater species from Lake Greifensee, 150 MB
 get-zoolake35:   (get-zenodo "18497521" "zoolake35-preprocessed.zip")
 
-# ZooScan, 3700 images, 20 classes
+# ZooScan, 3700 images, 20 classes, 30 MB
 get-zooscan20:   (get-zenodo "18497521" "zooscan20-preprocessed.zip")
 
-# ZooScan images, 1.4M images, 92 (sic) classes
+# ZooScan images, 1.4M images, 92 (sic) classes, 11 GB
 get-zooscan93:   (get-zenodo "18497521" "zooscan93-preprocessed.zip")
 
 
-# FlowCam, possibly macro, 130k images, 76 classes. (Raw, as the processed include augmentations)
+# FlowCam, possibly macro, 130k images, 76 classes. (Raw, as the processed include augmentations), 2 GB
 get-planktonflow76: tmpdir
     mkdir -p planktonflow76
     test -e tmp/planktonflow76.zip || (wget https://zenodo.org/records/16840846/files/raw_PlanktonFlow76.zip -O tmp/planktonflow76.zip && cd planktonflow76 && unzip ../tmp/planktonflow76)
 
 
-# SYKE IFCB data, 63k images, 50 classes
+# SYKE IFCB data, 63k images, 50 classes, 7 GB
 get-syke50: tmpdir
     mkdir -p syke50
     test -e tmp/syke50.zip || (wget https://b2share.eudat.eu/records/xvnrp-7ga56/files/phytoplankton_labeled.zip -O tmp/syke50.zip && cd syke50 && unzip ../tmp/syke50.zip)
 
 
-# Years 2006-2014 from the WHOI, IFCB 3.5M images, automatic annotations
+# Years 2006-2014 from the WHOI, IFCB 3.5M images, automatic annotations, 21 GB
 get-whoi: tmpdir
 	@echo "Getting WHOI IFCB data"
 	mkdir -p whoi
@@ -104,7 +104,7 @@ get-whoi: tmpdir
 # CSIRO provides some data sets, but the S3 storage and front end make the data difficult to download
 # SYKE 24k/20 classes ZooScan: https://etsin.fairdata.fi/dataset/6fa42787-9772-41a5-a6fc-0dde489ed908  -- can't be downloaded directly (needs authorization)
 
-# Helper function
+
 get-zenodo record filename: tmpdir
         test -e tmp/{{filename}} || (wget https://zenodo.org/records/{{record}}/files/{{filename}}?download=1 -O tmp/{{filename}} && unzip tmp/{{filename}})
 
