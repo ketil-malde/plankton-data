@@ -104,7 +104,7 @@ get-whoi: tmpdir
 # CSIRO provides some data sets, but the S3 storage and front end make the data difficult to download
 # SYKE 24k/20 classes ZooScan: https://etsin.fairdata.fi/dataset/6fa42787-9772-41a5-a6fc-0dde489ed908  -- can't be downloaded directly (needs authorization)
 
-# Helper function
+
 get-zenodo record filename: tmpdir
         test -e tmp/{{filename}} || (wget https://zenodo.org/records/{{record}}/files/{{filename}}?download=1 -O tmp/{{filename}} && unzip tmp/{{filename}})
 
