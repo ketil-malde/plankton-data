@@ -13,30 +13,25 @@ tmpdir:
 #   ZooScan: <https://www.seanoe.org/data/00446/55741/>
 
 # UVP6Net, 630k images, 54 classes
-get-uvp6-net: tmpdir
-	@echo "Getting uvp6-net data"
+get-uvp6net: tmpdir
 	# UVP6 does not create its own directory
 	mkdir -p UVP6Net
 	test -e tmp/119452.tar || (wget https://www.seanoe.org/data/00908/101948/data/119452.tar -O tmp/119452.tar && tar -C UVP6Net -xf tmp/119452.tar)
 
 # FlowCamNet, 300k images, 93 classes
-get-flowcam: tmpdir
-	@echo "Getting flowcam data"
+get-flowcamnet: tmpdir
 	test -e tmp/113201.tar || (wget https://www.seanoe.org/data/00908/101961/data/113201.tar -O tmp/113201.tar && tar -xf tmp/113201.tar)
 
 # ZooCamNet, 1.3M images, 93 classes
-get-zoocam: tmpdir
-	@echo "Getting ZooCam data"
+get-zoocamnet: tmpdir
 	test -e tmp/113094.tar || (wget https://www.seanoe.org/data/00907/101928/data/113094.tar -O tmp/113094.tar && tar -xf tmp/113094.tar)
 
 # ZooScanNet, 1.5M images, 120 classes.
-get-zooscan: tmpdir
-	@echo "Getting ZooScan data"
+get-zooscannet: tmpdir
 	test -e tmp/113141.tar || (wget https://www.seanoe.org/data/00446/55741/data/113141.tar -O tmp/113141.tar && tar -xf tmp/113141.tar)
 
 # ISIISNet, 400k images, 32 classes.
-get-isiis: tmpdir
-	@echo "Getting ISIIS data"
+get-isiisnet: tmpdir
 	test -e tmp/113146.tar || (wget https://www.seanoe.org/data/00908/101950/data/113146.tar -O tmp/113146.tar && tar -xf tmp/113146.tar)
 
 # From Womack et al.
@@ -80,6 +75,19 @@ get-zooscan20:   (get-zenodo "18497521" "zooscan20-preprocessed.zip")
 # ZooScan images, 1.4M images, 92 (sic) classes
 get-zooscan93:   (get-zenodo "18497521" "zooscan93-preprocessed.zip")
 
+
+# FlowCam, possibly macro, 130k images, 76 classes. (Raw, as the processed include augmentations)
+get-planktonflow76: tmpdir
+    mkdir -p planktonflow76
+    test -e tmp/planktonflow76.zip || (wget https://zenodo.org/records/16840846/files/raw_PlanktonFlow76.zip -O tmp/planktonflow76.zip && cd planktonflow76 && unzip ../tmp/planktonflow76)
+
+
+# SYKE IFCB data, 63k images, 50 classes
+get-syke50: tmpdir
+    mkdir -p syke50
+    test -e tmp/syke50.zip || (wget https://b2share.eudat.eu/records/xvnrp-7ga56/files/phytoplankton_labeled.zip -O tmp/syke50.zip && cd syke50 && unzip ../tmp/syke50.zip)
+
+
 # Years 2006-2014 from the WHOI, IFCB 3.5M images, automatic annotations
 get-whoi: tmpdir
 	@echo "Getting WHOI IFCB data"
@@ -88,14 +96,31 @@ get-whoi: tmpdir
 	    test -e tmp/$x.zip || (wget https://darchive.mblwhoilibrary.org/bitstreams/$x/download -O tmp/$x.zip && cd whoi && unzip ../tmp/$x.zip) \
 	done
 
-# CSIRO provides some data sets, but the S3 storage and front end make the data difficult to download
-# SYKE 24k/20 classes ZooScan: https://etsin.fairdata.fi/dataset/6fa42787-9772-41a5-a6fc-0dde489ed908
-# SYKE 63k/50 IFCB: https://b2share.eudat.eu/records/xvnrp-7ga56
 
-get-zenodo record filename:
+# Not yet processed
+# A collection of VPR data sets: https://www.bco-dmo.org/instrument/451
+
+# Unworkable data:
+# CSIRO provides some data sets, but the S3 storage and front end make the data difficult to download
+# SYKE 24k/20 classes ZooScan: https://etsin.fairdata.fi/dataset/6fa42787-9772-41a5-a6fc-0dde489ed908  -- can't be downloaded directly (needs authorization)
+
+# Helper function
+get-zenodo record filename: tmpdir
         test -e tmp/{{filename}} || (wget https://zenodo.org/records/{{record}}/files/{{filename}}?download=1 -O tmp/{{filename}} && unzip tmp/{{filename}})
 
-get-all-data: get-uvp6-net get-flowcam get-zoocam get-zooscan get-isiis get-uw38 get-whoi
+# By instrument type
+
+get-all-uvp6: get-uvp6net
+get-all-uvp5: get-uvp66
+get-all-isiis: get-isiisnet get-kaggle83 get-kaggle38
+get-all-ifcb: get-whoi get-whoi22 get-whoi79 get-syke50
+get-all-flowcam: get-flowcamnet get-planktonflow76
+get-all-zoocam: get-zoocamnet
+get-all-zooscan: get-zooscannet get-zooscan20 get-zooscan93
+get-all-misc: get-zoolake35 get-linnaeus466 get-pmid23 get-nooa38 get-hboi
+
+# Download everything
+get-everything: get-all-uvp6 get-all-uvp5 get-all-isiis get-all-ifcb get-all-flowcam get-all-zoocam get-all-zooscan get-all-misc
 
 validate zipfile:
         @echo "Validating {{zipfile}}"

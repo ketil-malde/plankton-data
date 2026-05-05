@@ -28,6 +28,8 @@ The [Dual Scripps Plankton Camera](https://jaffeweb.ucsd.edu/research-projects/s
 
 The In Situ Ichtyoplankton Imaging System [ISIIS](https://twilightzone.whoi.edu/work-impact/technology/stingray/) is a towed instrument using high resolution shadowgraphy.
 
+For instruments where there are several data sets, you should be able to do `just get-all-$instrument` to download all available data for the instrument of type `$instrument`.
+
 # Data sets
 
 Some of the currently provided targets are detailed below.  You can use `just --list` to show all available targets.
@@ -61,5 +63,5 @@ get-uw38
 
 Or you can just download everthing:
 
-get-all-data
+get-everything
 : Shortcut to download all of the above.
