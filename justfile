@@ -117,7 +117,7 @@ get-all-ifcb: get-whoi get-whoi22 get-whoi79 get-syke50
 get-all-flowcam: get-flowcamnet get-planktonflow76
 get-all-zoocam: get-zoocamnet
 get-all-zooscan: get-zooscannet get-zooscan20 get-zooscan93
-get-all-misc: get-zoolake35 get-linnaeus466 get-pmid23 get-nooa38 get-hboi
+get-all-misc: get-zoolake35 get-linnaeus466 get-pmid23 get-noaa38 get-hboi
 
 # Download everything
 get-everything: get-all-uvp6 get-all-uvp5 get-all-isiis get-all-ifcb get-all-flowcam get-all-zoocam get-all-zooscan get-all-misc
