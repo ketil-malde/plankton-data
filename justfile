@@ -120,6 +120,6 @@ get-all-misc: get-zoolake35 get-linnaeus466 get-pmid23 get-noaa38 get-hboi
 get-everything: get-all-uvp6 get-all-uvp5 get-all-isiis get-all-ifcb get-all-flowcam get-all-zoocam get-all-zooscan get-all-misc
 
 validate zipfile:
-        @echo "Validating {{zipfile}}"
-        grep {{zipfile}} downloads/checksums.txt | sha256sum -c -
+    @echo "Validating {{zipfile}}"
+    test -e {{zipfile}} && grep {{zipfile}} downloads/checksums.txt | sha256sum -c - || echo "{{zipfile}} does not exist"
 
